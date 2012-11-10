@@ -1,0 +1,8 @@
+{
+  "name" : "simple-reverb",
+  "keywords" : [
+    "reverb",
+    "plate"
+  ],
+  "script" : "simple-reverb.js"
+}
