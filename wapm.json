@@ -1,5 +1,7 @@
 {
   "name" : "simple-reverb",
+  "description" : "A simple reverb",
+  "repo" : "http://github.com/wapm/simple-reverb",
   "keywords" : [
     "reverb",
     "plate"
