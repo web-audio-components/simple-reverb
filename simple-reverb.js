@@ -58,7 +58,7 @@
     return convolver;
   }
 
-  function setupSetters () {
+  function setupParams () {
     var _this = this;
     this.__value = this.defaultValue;
     this.__defineGetter__( 'value', function () { return _this.__value; });
