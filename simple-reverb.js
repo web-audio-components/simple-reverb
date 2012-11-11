@@ -55,7 +55,6 @@
     setupParams.call( this.params.reverse );
 
     createImpulse.call( this );
-    return convolver;
   }
 
   function setupParams () {
