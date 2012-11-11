@@ -27,30 +27,21 @@
       name: 'seconds',
       defaultValue: options.seconds || 3,
       minValue: 1,
-      maxValue: 50,
-      set: function ( val ) {
-        createImpulse.call( _this );
-      }
+      maxValue: 50
     };
 
     var decay = {
       name: 'decay',
       defaultValue: options.decay || 2,
       minValue: 0,
-      maxValue: 100,
-      set: function ( val ) {
-        createImpulse.call( _this );
-      }
+      maxValue: 100
     };
 
     var reverse = {
       name: 'reverse',
       defaultValue: !!options.reverse || false,
       minValue: 0,
-      maxValue: 1,
-      set: function ( val ) {
-        createImpulse.call( _this );
-      }
+      maxValue: 1
     };
 
     this.params = {
@@ -59,8 +50,22 @@
       reverse: reverse
     };
 
+    setupParams.call( this.params.seconds );
+    setupParams.call( this.params.decay );
+    setupParams.call( this.params.reverse );
+
     createImpulse.call( this );
     return convolver;
+  }
+
+  function setupSetters () {
+    var _this = this;
+    this.__value = this.defaultValue;
+    this.__defineGetter__( 'value', function () { return _this.__value; });
+    this.__defineSetter__( 'value', function ( val ) {
+      _this.__value = val;
+      createImpulse();
+    });
   }
 
   function createImpulse () {
