@@ -57,6 +57,15 @@
     createImpulse.call( this );
   }
 
+  SimpleReverb.prototype.connect = function ( node ) {
+    this.output.connect( node && node.input ? node.input : node );
+  };
+
+  SimpleReverb.prototype.disconnect = function () {
+    this.output.disconnect();
+  };
+
+
   function setupParams () {
     var _this = this;
     this.__value = this.defaultValue;
