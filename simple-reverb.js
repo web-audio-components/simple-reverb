@@ -11,10 +11,11 @@
   }
 })(this, function () {
 
-  function SimpleReverb ( options ) {
+  function SimpleReverb ( context, options ) {
     options = options || {};
 
     var _this = this;
+    this.context = context;
     var convolver = this.context.createConvolver();
 
     this.input = convolver;
