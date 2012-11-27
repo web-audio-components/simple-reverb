@@ -39,7 +39,7 @@
 
     var reverse = {
       name: 'reverse',
-      defaultValue: !!options.reverse || false,
+      defaultValue: options.reverse ? 1 : 0,
       minValue: 0,
       maxValue: 1
     };
@@ -50,9 +50,9 @@
       reverse: reverse
     };
 
-    setupParams.call( this.params.seconds );
-    setupParams.call( this.params.decay );
-    setupParams.call( this.params.reverse );
+    setupParams.call( this, this.params.seconds );
+    setupParams.call( this, this.params.decay );
+    setupParams.call( this, this.params.reverse );
 
     createImpulse.call( this );
   }
@@ -66,13 +66,13 @@
   };
 
 
-  function setupParams () {
+  function setupParams ( param ) {
     var _this = this;
-    this.__value = this.defaultValue;
-    this.__defineGetter__( 'value', function () { return _this.__value; });
-    this.__defineSetter__( 'value', function ( val ) {
-      _this.__value = val;
-      createImpulse();
+    param.__value = param.value = param.defaultValue;
+    param.__defineGetter__( 'value', function () { return param.__value; });
+    param.__defineSetter__( 'value', function ( val ) {
+      param.__value = val;
+      createImpulse.call( _this );
     });
   }
 
