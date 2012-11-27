@@ -1,0 +1,46 @@
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #ddd;
+}
+a {
+  color: #66aa66;
+}
+.wrap {
+  width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  text-align: center;
+  *zoom: 1;
+}
+.wapm-module {
+  width: 1000px;
+  height: 150px;
+  border-radius: 15px;
+  background-color: #ccc;
+  border: 1px solid #aaa;
+}
+.wapm-module h3 {
+  float: left;
+  font-size: 36px;
+  margin-left: 15px;
+}
+.wapm-module-param {
+  float: right;
+  margin-right: 35px;
+  margin-top: 15px;
+  text-align: center;
+}
+.play {
+  font-size: 16px;
+  margin-top: 20px;
+  display: block;
+}
+.description {
+  margin-top: 20px;
+  text-align: left;
+}
