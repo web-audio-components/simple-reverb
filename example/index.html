@@ -13,6 +13,7 @@
     </div>
 </div>
 
+<h3 class="loading">loading...</h3>
 <a href="#" class="play">play</a>
 
 <div class="description">
@@ -29,10 +30,15 @@
 var
   context = allen.getAudioContext(),
   bufferNode = context.createBufferSource(),
-  module = new window.SimpleReverb( context );
+  module = new window.SimpleReverb( context ),
+  buffer;
 
 allen.getBuffer( 'vox.mp3', function ( e ) {
-    bufferNode.buffer = context.createBuffer( e.target.response, false );
+    buffer = context.createBuffer( e.target.response, false );
+    
+    // Loaded
+    $( 'a.play' ).show();
+    $( '.loading' ).hide();
 }, true );
 
 bufferNode.connect( module.input );
@@ -78,6 +84,11 @@ $(function () {
 
     $( 'a.play' ).click(function ( e ) {
         e.preventDefault();
+        bufferNode.noteOff( 0 );
+        bufferNode.disconnect();
+        bufferNode = context.createBufferSource();
+        bufferNode.buffer = buffer;
+        bufferNode.connect( module.input );
         bufferNode.noteOn( 0 );
     });
 

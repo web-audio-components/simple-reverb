@@ -36,9 +36,8 @@ a {
   text-align: center;
 }
 .play {
-  font-size: 16px;
-  margin-top: 20px;
-  display: block;
+  font-size: 24px;
+  display: none;
 }
 .description {
   margin-top: 20px;
