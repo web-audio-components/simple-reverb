@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>SimpleReverb example</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="wrap">
+    
+<div class="wapm-module">
+    <h3>simple-reverb</h3>
+    <div class="wapm-module-params">
+
+    </div>
+</div>
+
+<h3 class="loading">loading...</h3>
+<a href="#" class="play">play</a>
+
+<div class="description">
+    Only works in browsers that support the <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">Web Audio API</a>.
+    A part of the <a href="https://github.com/wapm">Web Audio Package Manager</a> project.
+</div>
+
+</div>
+<script src="../simple-reverb.js"></script>
+<script src="components/jquery/jquery.js"></script>
+<script src="components/jquery-knob/js/jquery.knob.js"></script>
+<script src="components/allen/allen.js"></script>
+<script>
+var
+  context = allen.getAudioContext(),
+  bufferNode = context.createBufferSource(),
+  module = new window.SimpleReverb( context ),
+  buffer;
+
+allen.getBuffer( 'vox.mp3', function ( e ) {
+    buffer = context.createBuffer( e.target.response, false );
+    
+    // Loaded
+    $( 'a.play' ).show();
+    $( '.loading' ).hide();
+}, true );
+
+bufferNode.connect( module.input );
+module.connect( context.destination );
+
+$(function () {
+    var
+      $params = $( '.wapm-module-params' ),
+      $param, $input;
+
+    // Push params to DOM
+    $.each( module.params, function ( param ) {
+        param = module.params[ param ];
+        $param = $('<div />').addClass( 'wapm-module-param' );
+        $input = $('<input />');
+        $input
+            .attr( 'data-min', param.minValue )
+            .attr( 'data-max', param.maxValue )
+            .data( 'name', param.name )
+            .val( param.value );
+
+        $param.append( $input );
+        $param.append( $('<div />').html( param.name ) );
+
+        $param.addClass( 'wapm-module-param-' + param.name );
+        $params.append( $param );
+    });
+
+    $( '.wapm-module-params input' ).knob({
+        change : function ( value ) {
+            var
+              $input = this.$;
+              param = module.params[ $input.data( 'name' ) ];
+            param.value = value;
+        },
+        angleOffset : -125,
+        angleArc : 250,
+        width : 100,
+        height : 100,
+        fgColor : '#66CC66',
+        bgColor : '#999'
+    });
+
+    $( 'a.play' ).click(function ( e ) {
+        e.preventDefault();
+        bufferNode.noteOff( 0 );
+        bufferNode.disconnect();
+        bufferNode = context.createBufferSource();
+        bufferNode.buffer = buffer;
+        bufferNode.connect( module.input );
+        bufferNode.noteOn( 0 );
+    });
+
+});
+
+</script>
+</body>
+</html>

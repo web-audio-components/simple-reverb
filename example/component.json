@@ -1,0 +1,10 @@
+{
+  "name" : "simple-reverb example",
+  "version": "0.1.0",
+  "main": "./index.html",
+  "dependencies": {
+    "jquery" : "*",
+    "jquery-knob" : "*",
+    "allen" : "*"
+  }
+}
