@@ -1,0 +1,33 @@
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+}
+
+#container {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.rack-container {
+  margin: 0 auto;
+}
+
+#controls {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#controls a {
+  text-decoration: none;
+  color: #5BC0DE;
+}
+
+#play, #stop {
+  display: none;
+}

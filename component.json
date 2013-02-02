@@ -1,0 +1,26 @@
+{
+  "name": "simple-reverb",
+  "repo": "web-audio-components/simple-reverb",
+  "description": "A simple reverb.",
+  "version": "0.0.1",
+  "author": "Jordan Santell",
+  "twitter": "@jsantell",
+  "keywords": [
+    "web-audio",
+    "reverb",
+    "effect"
+  ],
+  "dependencies": {},
+  "development": {
+    "web-audio-components/rack" : "*",
+    "jsantell/allen" : "*",
+    "component/event" : "*"
+  },
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ],
+  "web-audio": {
+    "type": "effect"
+  }
+}
